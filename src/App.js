@@ -1,11 +1,10 @@
 import './App.css';
 import CurrentWeather from './views/currentWeather';
 import WeatherDetails from './views/weatherDetails';
-import {fetchWeather, setErrorMessage, setLoading, setWeather} from './features/weather/weatherSlides';
+import {fetchWeather} from './features/weather/weatherSlides';
 import {useDispatch, useSelector} from 'react-redux';
 import { useEffect } from 'react';
 import { ErrorMessage } from './views/errorMessage';
-import axios from 'axios';
 
 function App() {
   
