@@ -5,7 +5,8 @@ import { faCloud, faDroplet, faWind, faSignsPost } from '@fortawesome/free-solid
 
 import './style.css';
 export default function WeatherDetails(){
-    const {details} = useSelector(state => state.weather); 
+    const {data:{details}} = useSelector(state => state.weather);
+    
     return (
         <div className="weather-details">
             <SearchBox/>

@@ -14,22 +14,25 @@ const options = {
 export const weatherSlides = createSlice({
     name: "weather",
     initialState: {
-        current:{},
-        details:{},
-        error:{
-            message:""
-        }
+        data:{
+            current:{},
+            details:{},
+            error:{
+                message:""
+            }
+        },
+        loading: true
     },
     reducers: {
         setWeather: (state, action)=>{
-            state.current = {
+            state.data.current = {
                 temp:{
                     c: action.payload.current.temp_c,  
                     f: action.payload.current.temp_f
                 },
                 condition : action.payload.current.condition,
             }
-            state.details = {
+            state.data.details = {
                 location: action.payload.location,
                 weatherDetails: {
                     wind:{
@@ -43,18 +46,22 @@ export const weatherSlides = createSlice({
                     humidity: action.payload.current.humidity,
                 }
             }
-            state.error.message = "";
+            state.data.error.message = ""
+            state.loading = false
         },
         setCity: (state, action)=>{
             options.params.q = "q="+action.payload;
         },
         setErrorMessage:(state, action)=>{
             state.error.message = action.payload
+        },
+        setLoading: (state, action)=>{
+            state.loading = action.payload
         }
     }
 });
 
-export const {setWeather, setCity, setErrorMessage} = weatherSlides.actions;
+export const {setWeather, setCity, setErrorMessage, setLoading} = weatherSlides.actions;
 
 export default weatherSlides.reducer
 
@@ -63,5 +70,5 @@ export const fetchWeather = ()=> (dispatch)=>{
         dispatch(setWeather(response.data))
     }).catch(e=>{
         dispatch(setErrorMessage("Ha habido un error.\n por favor intenta con otro nombre"))
-    })
+    });
 }

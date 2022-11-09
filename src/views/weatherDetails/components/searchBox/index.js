@@ -7,15 +7,16 @@ import { fetchWeather, setCity } from '../../../../features/weather/weatherSlide
 
 
 export const SearchBox = ()=>{
+    
+    const {data:{details:{location:{name}}}} = useSelector(state=> state.weather);
 
-    const dispatch = useDispatch()
-    const {details:{location:{name}}} = useSelector(state=> state.weather)
+    const dispatch = useDispatch();
 
     const [isOpen, setIsOpen] = useState(false);
     const [location, setLocation] = useState('');
 
     const handleSearchBox = (e)=>{
-        setLocation(e.target.value)
+        setLocation(e.target.value);
     }
 
     const handleSubmit = (event)=>{
@@ -27,9 +28,9 @@ export const SearchBox = ()=>{
     }
     
     const toggleSearchBox = (event, value)=>{
-        setIsOpen(value)
+        setIsOpen(value);
         if(value === false){
-            setLocation('')
+            setLocation('');
         }
         
         if(event.target.classList.contains("search-box__icon--search-activate") && location !== name){

@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 import './style.css'
 export default function CurrentWeather(){
 
-    const {current} = useSelector(state => state.weather);
+    const {data:{current}} = useSelector(state => state.weather);
 
     return(
         <div className="current-weather">
