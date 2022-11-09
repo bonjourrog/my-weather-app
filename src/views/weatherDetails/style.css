@@ -1,0 +1,39 @@
+.weather-details{
+    width: 100%;
+    height: 30%;
+    color: rgba(0, 0, 0, 0.800);
+}
+
+.weather-details__city{
+    display: block;
+    margin-top: 1.3rem;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: 800;
+    color:rgba(0, 0, 0, 0.600);
+}
+
+.weather-details__data{
+    width: 100%;
+    display: grid;
+    margin-top: 1.5rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+    list-style: none;
+}
+
+.weather-details__data > li{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.weather-details__data > li > p{
+    margin-top: .3rem;
+    color: rgba(0, 0, 0, 0.400);
+    font-weight: 700;
+}
+
+.weather-details__icon{
+    color:rgba(0, 0, 255, 0.500);
+}
